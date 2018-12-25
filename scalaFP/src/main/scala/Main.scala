@@ -38,4 +38,12 @@ object Main extends App {
     println("composition")
     println("f: A => B, g: B => C")
     println("a: A { a => g(f(a)) }")
+
+    private def composition(): Unit = {
+        def f(a: Double): String = (2 * a).toString
+        def g(b: String): Int = b.substring(0, 1).toInt
+        def composition(a: Double): Int = g(f(a))
+        println(composition(2.5))
+    }
+    composition()
 }
