@@ -18,6 +18,14 @@ print('currying');
 print('f: (A, B) => C');
 print('(a: A, b: B) { a => b => f(a, b) }');
 
+def currying():
+    def f(a, b):
+        return str(a * b)
+    currying = lambda a: lambda b: f(a, b)
+
+    print(currying(2.5)(2))
+currying()
+
 print('uncurrying');
 print('f: A => B => C');
 print('(a: A, b: B) { (a, b) => f(a)(b) }');
