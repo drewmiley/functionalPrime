@@ -29,6 +29,14 @@ console.log('uncurrying');
 console.log('f: A => B => C');
 console.log('(a: A, b: B) { (a, b) => f(a)(b) }');
 
+const uncurrying = () => {
+    const f = a => b => (a * b).toString();
+    const uncurrying = (a, b) => f(a)(b);
+
+    console.log(uncurrying(2.5, 2));
+}
+uncurrying();
+
 console.log('composition');
 console.log('f: A => B, g: B => C');
 console.log('a: A { a => g(f(a)) }');
