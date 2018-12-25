@@ -4,6 +4,16 @@ print('partial application');
 print('a: A, f: (A, B) => C');
 print('b: B { b => f(a, b) }');
 
+def partialApplication():
+    a = 2.5
+    def f(a, b):
+        return str(a * b)
+    def partial(b):
+        return f(a, b)
+
+    print(partial(2))
+partialApplication()
+
 print('currying');
 print('f: (A, B) => C');
 print('(a: A, b: B) { a => b => f(a, b) }');
