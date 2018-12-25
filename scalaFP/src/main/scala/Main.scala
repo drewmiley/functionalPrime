@@ -28,6 +28,12 @@ object Main extends App {
     println("f: A => B => C")
     println("(a: A, b: B) { (a, b) => f(a)(b) }")
 
+    private def uncurrying(): Unit = {
+        def f(a: Double)(b: Int): String = (a * b).toString
+        def uncurrying(a: Double, b: Int): String = f(a)(b)
+        println(uncurrying(2.5, 2))
+    }
+    uncurrying()
 
     println("composition")
     println("f: A => B, g: B => C")
