@@ -30,6 +30,14 @@ print('uncurrying');
 print('f: A => B => C');
 print('(a: A, b: B) { (a, b) => f(a)(b) }');
 
+def uncurrying():
+    f = lambda a: lambda b: str(a * b)
+    def uncurrying(a, b):
+        return f(a)(b)
+
+    print(uncurrying(2.5, 2))
+uncurrying()
+
 print('composition');
 print('f: A => B, g: B => C');
 print('a: A { a => g(f(a)) }');
