@@ -17,6 +17,12 @@ object Main extends App {
     println("f: (A, B) => C")
     println("(a: A, b: B) { a => b => f(a, b) }")
 
+    private def currying(): Unit = {
+        def f(a: Double, b: Int): String = (a * b).toString
+        def currying(a: Double)(b: Int): String = f(a, b)
+        println(currying(2.5)(2))
+    }
+    currying()
 
     println("uncurrying")
     println("f: A => B => C")
