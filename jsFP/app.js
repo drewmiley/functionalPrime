@@ -40,3 +40,12 @@ uncurrying();
 console.log('composition');
 console.log('f: A => B, g: B => C');
 console.log('a: A { a => g(f(a)) }');
+
+const composition = () => {
+    const f = a => (2 * a).toString();
+    const g = b => parseInt(b.substr(0, 1));
+    const composition = a => g(f(a));
+
+    console.log(composition(2.5));
+}
+composition();
