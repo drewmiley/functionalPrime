@@ -22,6 +22,8 @@ public class Main {
         System.out.println("f: A => B => C");
         System.out.println("(a: A, b: B) { (a, b) => f(a)(b) }");
 
+        uncurrying();
+
         System.out.println("composition");
         System.out.println("f: A => B, g: B => C");
         System.out.println("a: A { a => g(f(a)) }");
@@ -36,7 +38,13 @@ public class Main {
 
     static void currying() {
         BiFunction<Double, Integer, String> f = (a, b) -> String.valueOf(a * b);
-        Function<Integer, Function<Double, String>> currying = b -> a -> f.apply(a, b);
-        System.out.println(currying.apply(2).apply(2.5));
+        Function<Double, Function<Integer, String>> currying = a -> b -> f.apply(a, b);
+        System.out.println(currying.apply(2.5).apply(2));
+    }
+
+    static void uncurrying() {
+        Function<Double, Function<Integer, String>> f = a -> b -> String.valueOf(a * b);
+        BiFunction<Double, Integer, String> uncurrying = (a, b) -> f.apply(a).apply(b);
+        System.out.println(uncurrying.apply(2.5, 2));
     }
 }
