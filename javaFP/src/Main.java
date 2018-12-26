@@ -27,6 +27,8 @@ public class Main {
         System.out.println("composition");
         System.out.println("f: A => B, g: B => C");
         System.out.println("a: A { a => g(f(a)) }");
+
+        composition();
     }
 
     static void partialApplication() {
@@ -46,5 +48,12 @@ public class Main {
         Function<Double, Function<Integer, String>> f = a -> b -> String.valueOf(a * b);
         BiFunction<Double, Integer, String> uncurrying = (a, b) -> f.apply(a).apply(b);
         System.out.println(uncurrying.apply(2.5, 2));
+    }
+
+    static void composition() {
+        Function<Double, String> f = a -> String.valueOf(2 * a);
+        Function<String, Integer> g = b -> Integer.parseInt(b.substring(0, 1));
+        Function<Double, Integer> composition = a -> g.apply(f.apply(a));
+        System.out.println(composition.apply(2.5));
     }
 }
